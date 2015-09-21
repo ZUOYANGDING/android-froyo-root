@@ -7,27 +7,31 @@ Install / acquire the following
 
 ### Compiling and Deploying
 1.    Set up an NDK standalone toolchain to compile the exploit for your Android.
-    ```
-    SYSROOT=$NDK/platforms/android-2.2/arch-<arch>/
-    $NDK/build/tools/make-standalone-toolchain.sh --toolchain=<name> --platform=android-8 --install-dir=<toolchain_dir>
-    export PATH=<toolchain_dir>:$PATH
-    export NDK_CC=<compiler_name>
-    ```
-    See the NDK docs for more details
+
+```
+SYSROOT=$NDK/platforms/android-2.2/arch-<arch>/
+$NDK/build/tools/make-standalone-toolchain.sh --toolchain=<name> --platform=android-8 --install-dir=<toolchain_dir>
+export PATH=<toolchain_dir>:$PATH
+export NDK_CC=<compiler_name>
+```
+
+See the NDK docs for more details
+
 1.    Compile the exploit
-    ```
-    git clone https://github.com/Purdue-ACM-SIGSAC/android-froyo-root.git
-    cd android-froyo-root
-    NDK_CC -o exploit exploit.c
-    adb push exploit /data/local/tmp
-    adb shell chmod 777 /data/local/tmp/exploit
-    ```
+    
+```
+git clone https://github.com/Purdue-ACM-SIGSAC/android-froyo-root.git
+cd android-froyo-root
+NDK_CC -o exploit exploit.c
+adb push exploit /data/local/tmp
+adb shell chmod 777 /data/local/tmp/exploit
+```
 
 ### Running
-    ```
-    adb shell ./data/local/tmp/exploit root
-    ```
-    or
-    ```
-    adb shell ./data/local/tmp/exploit unroot
-    ```
+```
+adb shell ./data/local/tmp/exploit root
+```
+or
+```
+adb shell ./data/local/tmp/exploit unroot
+```
